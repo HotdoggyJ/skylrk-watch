@@ -3,6 +3,7 @@ SKYLRK 新品通知
 每次執行：抓一次商品清單 → 跟上次存的比對 → 有新品就推播到手機 (ntfy)
 """
 
+import base64
 import json
 import os
 import re
@@ -45,10 +46,12 @@ def save_seen(handles):
 
 
 def notify(title, body):
+    # HTTP 標頭只能放英文，中文標題要先用 RFC 2047 格式編碼，ntfy 會自動解回中文
+    encoded_title = "=?UTF-8?B?" + base64.b64encode(title.encode("utf-8")).decode("ascii") + "?="
     requests.post(
         f"https://ntfy.sh/{NTFY_TOPIC}",
         data=body.encode("utf-8"),
-        headers={"Title": title, "Priority": "high", "Tags": "shopping_bags"},
+        headers={"Title": encoded_title, "Priority": "high", "Tags": "shopping_bags"},
         timeout=30,
     )
 
