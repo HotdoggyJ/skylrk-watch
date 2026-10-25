@@ -1,6 +1,6 @@
 """
-SKYLRK 新品 + 補貨通知
-每次執行：抓一次商品清單 → 跟上次存的比對 → 有新品或補貨就推播到手機 (ntfy)
+SKYLRK 新品 + 補貨通知（尺寸等級）
+每次執行：抓一次商品清單 → 跟上次存的比對 → 有新品、或任一尺寸從沒貨變有貨，就推播到手機 (ntfy)
 """
 
 import base64
@@ -10,14 +10,14 @@ import re
 import requests
 
 SHOP = "https://skylrk.com"
-SEEN_FILE = "seen.json"               # 存「已經看過的商品」和「上次有沒有貨」
+SEEN_FILE = "seen.json"               # 存每個商品、每個尺寸上次有沒有貨
 NTFY_TOPIC = os.environ["NTFY_TOPIC"]  # 從 GitHub Secrets 讀進來，不寫在程式裡
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (new-item-checker)"}
 
 
 def get_products():
-    """回傳 {商品代號: {"title": 名稱, "available": 有沒有貨}}。
+    """回傳 {商品代號: {"title": 名稱, "variants": {尺寸名稱: 有沒有貨}}}。
     先試 Shopify 的 products.json，失敗再退回讀網頁（網頁看不出庫存，一律當有貨）。"""
     try:
         r = requests.get(f"{SHOP}/products.json?limit=250", headers=HEADERS, timeout=30)
@@ -27,7 +27,7 @@ def get_products():
             return {
                 p["handle"]: {
                     "title": p["title"],
-                    "available": any(v.get("available") for v in p.get("variants", [])),
+                    "variants": {v["title"]: bool(v.get("available")) for v in p.get("variants", [])},
                 }
                 for p in products
             }
@@ -37,18 +37,19 @@ def get_products():
     r = requests.get(SHOP, headers=HEADERS, timeout=30)
     r.raise_for_status()
     handles = re.findall(r'href="/products/([a-z0-9\-]+)', r.text)
-    return {h: {"title": h.replace("-", " ").upper(), "available": True}
+    return {h: {"title": h.replace("-", " ").upper(), "variants": {"Default": True}}
             for h in dict.fromkeys(handles)}
 
 
 def load_seen():
+    """讀舊紀錄。舊版格式（名單、或商品等級的有貨/沒貨）會自動轉成新格式。"""
     if not os.path.exists(SEEN_FILE):
         return None
     with open(SEEN_FILE, encoding="utf-8") as f:
         data = json.load(f)
-    if isinstance(data, list):           # 舊版格式只有名單，沒有庫存，先當作有貨
-        return {h: True for h in data}
-    return data
+    if isinstance(data, list):
+        return {h: {} for h in data}
+    return {h: (v if isinstance(v, dict) else {}) for h, v in data.items()}
 
 
 def save_seen(seen):
@@ -74,14 +75,23 @@ def main():
     seen = load_seen()
     if seen is None:
         # 第一次執行：把現有商品全部記下來，不算新品
-        save_seen({h: p["available"] for h, p in current.items()})
+        save_seen({h: p["variants"] for h, p in current.items()})
         notify("SKYLRK 監控已啟動", f"已記錄 {len(current)} 個現有商品，之後有新品或補貨會通知你。")
         print("第一次執行，已建立 seen.json")
         return
 
+    # 新品：以前沒看過的商品
     new = [h for h in current if h not in seen]
-    restocked = [h for h, p in current.items()
-                 if h in seen and seen[h] is False and p["available"]]
+
+    # 補貨：以前看過、而且某個尺寸上次是沒貨、這次變有貨
+    restocked = []   # (商品代號, [尺寸, 尺寸...])
+    for h, p in current.items():
+        if h not in seen:
+            continue
+        old = seen[h]
+        sizes = [s for s, ok in p["variants"].items() if ok and old.get(s) is False]
+        if sizes:
+            restocked.append((h, sizes))
 
     if new:
         lines = [f"{current[h]['title']}\n{SHOP}/products/{h}" for h in new]
@@ -89,16 +99,17 @@ def main():
         print("新品:", [current[h]["title"] for h in new])
 
     if restocked:
-        lines = [f"{current[h]['title']}\n{SHOP}/products/{h}" for h in restocked]
+        lines = [f"{current[h]['title']}（{', '.join(sizes)}）\n{SHOP}/products/{h}"
+                 for h, sizes in restocked]
         notify(f"SKYLRK 補貨 x{len(restocked)}", "\n\n".join(lines))
-        print("補貨:", [current[h]["title"] for h in restocked])
+        print("補貨:", [(current[h]["title"], sizes) for h, sizes in restocked])
 
     if not new and not restocked:
         print("沒有新品也沒有補貨")
 
-    # 更新紀錄：新商品加進去，舊商品更新庫存狀態
+    # 更新紀錄：新商品加進去，舊商品更新每個尺寸的庫存狀態
     for h, p in current.items():
-        seen[h] = p["available"]
+        seen[h] = p["variants"]
     save_seen(seen)
 
 
