@@ -1,8 +1,6 @@
 name: SKYLRK new item check v2
 
 on:
-  schedule:
-    - cron: "*/12 * * * *"   # 每 12 分鐘跑一次 (UTC 時間，但對你沒差)
   workflow_dispatch:         # 讓你可以手動按按鈕立刻跑一次
 
 permissions:
