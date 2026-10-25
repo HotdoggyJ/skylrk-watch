@@ -1,10 +1,14 @@
 name: SKYLRK new item check v2
 
 on:
-  workflow_dispatch:         # 讓你可以手動按按鈕立刻跑一次
+  workflow_dispatch:         # 讓 cron-job.org（或你自己）可以按按鈕觸發
 
 permissions:
   contents: write            # 允許程式把 seen.json 存回來
+
+concurrency:
+  group: skylrk-check        # 同一時間只跑一個，後面來的排隊等前面跑完
+  cancel-in-progress: false
 
 jobs:
   check:
@@ -28,4 +32,5 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add seen.json
           git diff --cached --quiet || git commit -m "update seen.json"
+          git pull --rebase
           git push
