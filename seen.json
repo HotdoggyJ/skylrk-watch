@@ -121,7 +121,7 @@
     "DOTS / XS": true,
     "DOTS / S": true,
     "DOTS / M": true,
-    "DOTS / L": false,
+    "DOTS / L": true,
     "DOTS / XL": false,
     "DOTS / XXL": false
   },
