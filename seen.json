@@ -4,37 +4,56 @@
     "JET / L/XL": false
   },
   "beanie-ash": {
-    "Default": true
+    "ASH": false
   },
   "boxer-brief-3-pack-1": {
-    "Default": true
+    "APPLE, AQUA, TRUE BLUE / XS": true,
+    "APPLE, AQUA, TRUE BLUE / S": true,
+    "APPLE, AQUA, TRUE BLUE / M": true,
+    "APPLE, AQUA, TRUE BLUE / L": true,
+    "APPLE, AQUA, TRUE BLUE / XL": true,
+    "APPLE, AQUA, TRUE BLUE / 2XL": false
   },
   "bump-case-clear": {
-    "Default": true
+    "CLEAR / IPHONE 17 PRO": true,
+    "CLEAR / IPHONE 17 PRO MAX": true
   },
   "bump-case-lava": {
-    "Default": true
+    "LAVA / IPHONE 17 PRO": true,
+    "LAVA / IPHONE 17 PRO MAX": true
   },
   "bump-case-slime": {
-    "Default": true
+    "SLIME / IPHONE 17 PRO": true,
+    "SLIME / IPHONE 17 PRO MAX": true
   },
   "bump-case-smudge": {
-    "Default": true
+    "SMUDGE / IPHONE 17 PRO": true,
+    "SMUDGE / IPHONE 17 PRO MAX": true
   },
   "glicky-chrome": {
-    "Default": true
+    "CHROME": true
   },
   "glicky-gloss": {
-    "Default": true
+    "GLOSS": true
   },
   "glicky-heat": {
-    "Default": true
+    "HEAT": true
   },
   "hoodie": {
-    "Default": true
+    "JELLY / XS": false,
+    "JELLY / S": false,
+    "JELLY / M": false,
+    "JELLY / L": false,
+    "JELLY / XL": false,
+    "JELLY / 2XL": false
   },
   "hoodie-2": {
-    "Default": true
+    "SUPER BLUE / XS": false,
+    "SUPER BLUE / S": false,
+    "SUPER BLUE / M": false,
+    "SUPER BLUE / L": false,
+    "SUPER BLUE / XL": false,
+    "SUPER BLUE / 2XL": false
   },
   "hoodie-spot-pine": {
     "PINE / XS": false,
@@ -45,19 +64,44 @@
     "PINE / 2XL": true
   },
   "new-boxer-short-turn-back-waist-blue-plaid": {
-    "Default": true
+    "BLUE PLAID / XS": true,
+    "BLUE PLAID / S": true,
+    "BLUE PLAID / M": true,
+    "BLUE PLAID / L": true,
+    "BLUE PLAID / XL": true,
+    "BLUE PLAID / XXL": true
   },
   "new-boxer-short-turn-back-waist-yellow-plaid": {
-    "Default": true
+    "YELLOW PLAID / XS": true,
+    "YELLOW PLAID / S": true,
+    "YELLOW PLAID / M": true,
+    "YELLOW PLAID / L": true,
+    "YELLOW PLAID / XL": true,
+    "YELLOW PLAID / XXL": true
   },
   "painter-pant-angel": {
-    "Default": true
+    "Angel / 28": true,
+    "Angel / 30": true,
+    "Angel / 32": true,
+    "Angel / 34": true,
+    "Angel / 36": false,
+    "Angel / 38": false
   },
   "painter-pant-copper": {
-    "Default": true
+    "COPPER / 28": true,
+    "COPPER / 30": true,
+    "COPPER / 32": true,
+    "COPPER / 34": true,
+    "COPPER / 36": false,
+    "COPPER / 38": false
   },
   "painter-pant-smoke": {
-    "Default": true
+    "SMOKE / 28": true,
+    "SMOKE / 30": true,
+    "SMOKE / 32": true,
+    "SMOKE / 34": true,
+    "SMOKE / 36": false,
+    "SMOKE / 38": false
   },
   "pleated-denim-jean": {
     "RAW / XS": true,
@@ -74,7 +118,12 @@
     "BLANKET WASH / 2XL": true
   },
   "reverse-no-zip-dots": {
-    "Default": true
+    "DOTS / XS": true,
+    "DOTS / S": true,
+    "DOTS / M": true,
+    "DOTS / L": false,
+    "DOTS / XL": false,
+    "DOTS / XXL": false
   },
   "reverse-zip-hoodie-1": {
     "APPLE / XS": false,
@@ -85,10 +134,10 @@
     "APPLE / XXL": false
   },
   "rib-knit-beanie": {
-    "Default": true
+    "ICY": false
   },
   "rib-knit-beanie-1": {
-    "Default": true
+    "WHISPER": true
   },
   "slouch-sock-2-pack": {
     "RAIN/BLOOH": true
@@ -99,9 +148,21 @@
     "JET": false
   },
   "sunken-mule": {
-    "Default": true
+    "CORAL / M 4 / W 5": true,
+    "CORAL / M 5 / W 6": true,
+    "CORAL / M 6 / W 7": true,
+    "CORAL / M 7 / W 8": true,
+    "CORAL / M 8 / W 9": true,
+    "CORAL / M 9 / W 10": true,
+    "CORAL / M 10 / W 11": true,
+    "CORAL / M 11 / W 12": true,
+    "CORAL / M 12 / W 13": true,
+    "CORAL / M 13 / W 14": true,
+    "CORAL / M 14": true,
+    "CORAL / M 15": true
   },
   "thin-loop-sock-2-pack": {
-    "Default": true
+    "HAILEY GREY / JET": true,
+    "CLOUDY PINK / COFFEE": true
   }
 }
