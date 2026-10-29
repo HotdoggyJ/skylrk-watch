@@ -1,6 +1,6 @@
 """
-SKYLRK 新品 + 補貨通知（尺寸等級）
-每次執行：抓一次商品清單 → 跟上次存的比對 → 有新品、或任一尺寸從沒貨變有貨，就推播到手機 (ntfy)
+SKYLRK 新品 / 新色 / 補貨 / 上首頁 通知
+每次執行：抓商品清單 + 首頁 → 跟上次存的比對 → 有變化就推播到手機 (ntfy)
 """
 
 import base64
@@ -10,46 +10,56 @@ import re
 import requests
 
 SHOP = "https://skylrk.com"
-SEEN_FILE = "seen.json"               # 存每個商品、每個尺寸上次有沒有貨
+SEEN_FILE = "seen.json"               # 存每個商品的尺寸/顏色庫存、有沒有在首頁
 NTFY_TOPIC = os.environ["NTFY_TOPIC"]  # 從 GitHub Secrets 讀進來，不寫在程式裡
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (new-item-checker)"}
 
 
 def get_products():
-    """回傳 {商品代號: {"title": 名稱, "variants": {尺寸名稱: 有沒有貨}}}。
-    先試 Shopify 的 products.json，失敗再退回讀網頁（網頁看不出庫存，一律當有貨）。"""
-    try:
-        r = requests.get(f"{SHOP}/products.json?limit=250", headers=HEADERS, timeout=30)
-        r.raise_for_status()
-        products = r.json()["products"]
-        if products:
-            return {
-                p["handle"]: {
-                    "title": p["title"],
-                    "variants": {v["title"]: bool(v.get("available")) for v in p.get("variants", [])},
-                }
-                for p in products
-            }
-    except Exception as e:
-        print("products.json 失敗，改讀網頁:", e)
-
-    r = requests.get(SHOP, headers=HEADERS, timeout=30)
+    """回傳 {商品代號: {"title": 名稱, "variants": {選項名稱: 有沒有貨}}}
+    選項名稱像 "Blue / M"，顏色和尺寸都在裡面。"""
+    r = requests.get(f"{SHOP}/products.json?limit=250", headers=HEADERS, timeout=30)
     r.raise_for_status()
-    handles = re.findall(r'href="/products/([a-z0-9\-]+)', r.text)
-    return {h: {"title": h.replace("-", " ").upper(), "variants": {"Default": True}}
-            for h in dict.fromkeys(handles)}
+    return {
+        p["handle"]: {
+            "title": p["title"],
+            "variants": {v["title"]: bool(v.get("available")) for v in p.get("variants", [])},
+        }
+        for p in r.json()["products"]
+    }
+
+
+def get_homepage_handles():
+    """回傳首頁上有出現的商品代號（集合）。抓不到就回傳 None，當作這輪不判斷首頁。"""
+    try:
+        r = requests.get(SHOP, headers=HEADERS, timeout=30)
+        r.raise_for_status()
+        return set(re.findall(r'href="/products/([a-z0-9\-]+)', r.text))
+    except Exception as e:
+        print("首頁抓取失敗，這輪跳過首頁判斷:", e)
+        return None
 
 
 def load_seen():
-    """讀舊紀錄。舊版格式（名單、或商品等級的有貨/沒貨）會自動轉成新格式。"""
+    """讀舊紀錄。舊版格式會自動轉成新格式：{代號: {"variants": {...}, "home": bool}}"""
     if not os.path.exists(SEEN_FILE):
         return None
     with open(SEEN_FILE, encoding="utf-8") as f:
         data = json.load(f)
+    seen = {}
     if isinstance(data, list):
-        return {h: {} for h in data}
-    return {h: (v if isinstance(v, dict) else {}) for h, v in data.items()}
+        for h in data:
+            seen[h] = {"variants": {}, "home": None}
+    else:
+        for h, v in data.items():
+            if isinstance(v, dict) and "variants" in v:
+                seen[h] = {"variants": v["variants"], "home": v.get("home")}
+            elif isinstance(v, dict):
+                seen[h] = {"variants": v, "home": None}
+            else:
+                seen[h] = {"variants": {}, "home": None}
+    return seen
 
 
 def save_seen(seen):
@@ -63,53 +73,66 @@ def notify(title, body):
     requests.post(
         f"https://ntfy.sh/{NTFY_TOPIC}",
         data=body.encode("utf-8"),
-        headers={"Title": encoded_title, "Priority": "high", "Tags": "shopping_bags"},
+        headers={"Title": encoded_title, "Priority": "urgent", "Tags": "shopping_bags"},
         timeout=30,
     )
 
 
+def link(h):
+    return f"{SHOP}/products/{h}"
+
+
 def main():
     current = get_products()
-    print(f"目前共 {len(current)} 個商品")
+    home = get_homepage_handles()
+    print(f"目前共 {len(current)} 個商品，首頁 {len(home) if home is not None else '?'} 個")
 
     seen = load_seen()
     if seen is None:
-        # 第一次執行：把現有商品全部記下來，不算新品
-        save_seen({h: p["variants"] for h, p in current.items()})
-        notify("SKYLRK 監控已啟動", f"已記錄 {len(current)} 個現有商品，之後有新品或補貨會通知你。")
+        save_seen({h: {"variants": p["variants"], "home": (h in home) if home is not None else None}
+                   for h, p in current.items()})
+        notify("SKYLRK 監控已啟動", f"已記錄 {len(current)} 個現有商品，之後有新品、新色、補貨、上首頁都會通知你。")
         print("第一次執行，已建立 seen.json")
         return
 
-    # 新品：以前沒看過的商品
-    new = [h for h in current if h not in seen]
+    new, new_variants, restocked, to_home = [], [], [], []
 
-    # 補貨：以前看過、而且某個尺寸上次是沒貨、這次變有貨
-    restocked = []   # (商品代號, [尺寸, 尺寸...])
     for h, p in current.items():
         if h not in seen:
+            new.append(h)                                   # 全新商品
             continue
-        old = seen[h]
-        sizes = [s for s, ok in p["variants"].items() if ok and old.get(s) is False]
-        if sizes:
-            restocked.append((h, sizes))
+        old = seen[h]["variants"]
+        added = [s for s in p["variants"] if s not in old]  # 新顏色 / 新尺寸
+        if added:
+            new_variants.append((h, added))
+        back = [s for s, ok in p["variants"].items() if ok and old.get(s) is False]
+        if back:
+            restocked.append((h, back))                     # 補貨
+        if home is not None and h in home and seen[h]["home"] is False:
+            to_home.append(h)                               # 本來不在首頁，現在上首頁了
 
     if new:
-        lines = [f"{current[h]['title']}\n{SHOP}/products/{h}" for h in new]
-        notify(f"SKYLRK 新品 x{len(new)}", "\n\n".join(lines))
-        print("新品:", [current[h]["title"] for h in new])
-
+        notify(f"SKYLRK 新品 x{len(new)}",
+               "\n\n".join(f"{current[h]['title']}\n{link(h)}" for h in new))
+    if new_variants:
+        notify(f"SKYLRK 新色/新尺寸 x{len(new_variants)}",
+               "\n\n".join(f"{current[h]['title']}（{', '.join(s)}）\n{link(h)}" for h, s in new_variants))
     if restocked:
-        lines = [f"{current[h]['title']}（{', '.join(sizes)}）\n{SHOP}/products/{h}"
-                 for h, sizes in restocked]
-        notify(f"SKYLRK 補貨 x{len(restocked)}", "\n\n".join(lines))
-        print("補貨:", [(current[h]["title"], sizes) for h, sizes in restocked])
+        notify(f"SKYLRK 補貨 x{len(restocked)}",
+               "\n\n".join(f"{current[h]['title']}（{', '.join(s)}）\n{link(h)}" for h, s in restocked))
+    if to_home:
+        notify(f"SKYLRK 上首頁 x{len(to_home)}",
+               "\n\n".join(f"{current[h]['title']}\n{link(h)}" for h in to_home))
 
-    if not new and not restocked:
-        print("沒有新品也沒有補貨")
+    print("新品:", new, "| 新色:", new_variants, "| 補貨:", restocked, "| 上首頁:", to_home)
 
-    # 更新紀錄：新商品加進去，舊商品更新每個尺寸的庫存狀態
+    # 更新紀錄
     for h, p in current.items():
-        seen[h] = p["variants"]
+        prev_home = seen.get(h, {}).get("home")
+        seen[h] = {
+            "variants": p["variants"],
+            "home": (h in home) if home is not None else prev_home,
+        }
     save_seen(seen)
 
 
