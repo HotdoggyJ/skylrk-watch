@@ -241,7 +241,7 @@
   },
   "thin-loop-sock-2-pack": {
     "variants": {
-      "HAILEY GREY / JET": true,
+      "HAILEY GREY / JET": false,
       "CLOUDY PINK / COFFEE": true
     },
     "home": true
