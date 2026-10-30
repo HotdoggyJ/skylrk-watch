@@ -204,7 +204,7 @@
   },
   "rib-knit-beanie-1": {
     "variants": {
-      "WHISPER": true
+      "WHISPER": false
     },
     "home": true
   },
