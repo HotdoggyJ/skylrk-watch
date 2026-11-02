@@ -188,7 +188,7 @@
   "reverse-zip-hoodie-1": {
     "variants": {
       "APPLE / XS": false,
-      "APPLE / S": false,
+      "APPLE / S": true,
       "APPLE / M": false,
       "APPLE / L": false,
       "APPLE / XL": false,
