@@ -250,6 +250,12 @@
     },
     "home": true
   },
+  "speed-demon-rootbeer": {
+    "variants": {
+      "ROOTBEER": true
+    },
+    "home": false
+  },
   "sunken-mule": {
     "variants": {
       "CORAL / M 4 / W 5": true,
