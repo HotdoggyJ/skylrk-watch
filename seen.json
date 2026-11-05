@@ -248,6 +248,12 @@
     },
     "home": false
   },
+  "skullcap-powder": {
+    "variants": {
+      "Pink": true
+    },
+    "home": false
+  },
   "skullcap-spirit": {
     "variants": {
       "Blue": true
