@@ -12,6 +12,12 @@
     },
     "home": true
   },
+  "beanie-cashew": {
+    "variants": {
+      "CASHEW": true
+    },
+    "home": false
+  },
   "boxer-brief-3-pack-1": {
     "variants": {
       "APPLE, AQUA, TRUE BLUE / XS": true,
