@@ -236,6 +236,16 @@
     },
     "home": true
   },
+  "slim": {
+    "variants": {
+      "SHADE": true,
+      "TOASTY": true,
+      "PUTTY": true,
+      "SKY": true,
+      "DUSTY PINK": true
+    },
+    "home": false
+  },
   "slouch-sock-2-pack": {
     "variants": {
       "RAIN/BLOOH": true
