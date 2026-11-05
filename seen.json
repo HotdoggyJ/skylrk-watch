@@ -73,8 +73,8 @@
     "variants": {
       "CAVE / XS": false,
       "CAVE / S": true,
-      "CAVE / M": false,
-      "CAVE / L": false,
+      "CAVE / M": true,
+      "CAVE / L": true,
       "CAVE / XL": false,
       "CAVE / 2XL": true
     },
