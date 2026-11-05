@@ -254,6 +254,12 @@
     },
     "home": false
   },
+  "skullcap-punch": {
+    "variants": {
+      "PUNCH": false
+    },
+    "home": false
+  },
   "skullcap-spirit": {
     "variants": {
       "Blue": true
