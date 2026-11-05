@@ -6,6 +6,13 @@
     },
     "home": false
   },
+  "beanie": {
+    "variants": {
+      "CRAN": true,
+      "Angel": true
+    },
+    "home": false
+  },
   "beanie-ash": {
     "variants": {
       "ASH": true
