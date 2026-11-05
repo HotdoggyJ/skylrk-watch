@@ -270,5 +270,11 @@
       "CLOUDY PINK / COFFEE": true
     },
     "home": true
+  },
+  "upsidedown": {
+    "variants": {
+      "CLEAR": true
+    },
+    "home": false
   }
 }
