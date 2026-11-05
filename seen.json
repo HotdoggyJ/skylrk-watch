@@ -242,6 +242,12 @@
     },
     "home": false
   },
+  "skullcap-spirit": {
+    "variants": {
+      "Blue": true
+    },
+    "home": false
+  },
   "slim": {
     "variants": {
       "SHADE": true,
