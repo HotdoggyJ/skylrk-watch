@@ -105,7 +105,7 @@
   "new-boxer-short-turn-back-waist-blue-plaid": {
     "variants": {
       "BLUE PLAID / XS": false,
-      "BLUE PLAID / S": true,
+      "BLUE PLAID / S": false,
       "BLUE PLAID / M": true,
       "BLUE PLAID / L": true,
       "BLUE PLAID / XL": true,
