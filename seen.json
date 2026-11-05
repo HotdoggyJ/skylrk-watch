@@ -9,7 +9,10 @@
   "beanie": {
     "variants": {
       "CRAN": true,
-      "Angel": true
+      "WAVE CAMO": true,
+      "CHERRY CAMO": true,
+      "Angel": true,
+      "EARTH CAMO": true
     },
     "home": false
   },
