@@ -256,6 +256,12 @@
     },
     "home": false
   },
+  "speed-demon-snow-camo": {
+    "variants": {
+      "SNOW CAMO": true
+    },
+    "home": false
+  },
   "sunken-mule": {
     "variants": {
       "CORAL / M 4 / W 5": true,
