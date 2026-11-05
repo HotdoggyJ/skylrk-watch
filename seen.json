@@ -18,7 +18,7 @@
   },
   "beanie-ash": {
     "variants": {
-      "ASH": true
+      "ASH": false
     },
     "home": true
   },
