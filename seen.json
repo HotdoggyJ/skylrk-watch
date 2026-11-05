@@ -276,7 +276,12 @@
   },
   "upsidedown": {
     "variants": {
-      "CLEAR": true
+      "GLOSS": true,
+      "GUM": true,
+      "CLEAR": true,
+      "WAX": true,
+      "TOASTY": true,
+      "GOLF": true
     },
     "home": false
   }
