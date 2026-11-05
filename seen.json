@@ -25,6 +25,12 @@
     },
     "home": false
   },
+  "beanie-lime": {
+    "variants": {
+      "LIME": true
+    },
+    "home": false
+  },
   "boxer-brief-3-pack-1": {
     "variants": {
       "APPLE, AQUA, TRUE BLUE / XS": true,
@@ -86,8 +92,8 @@
     "variants": {
       "CAVE / XS": false,
       "CAVE / S": true,
-      "CAVE / M": true,
-      "CAVE / L": true,
+      "CAVE / M": false,
+      "CAVE / L": false,
       "CAVE / XL": false,
       "CAVE / 2XL": true
     },
