@@ -236,6 +236,12 @@
     },
     "home": true
   },
+  "skullcap": {
+    "variants": {
+      "BASIL": false
+    },
+    "home": false
+  },
   "slim": {
     "variants": {
       "SHADE": true,
