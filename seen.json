@@ -15,13 +15,13 @@
       "GUM": true,
       "EARTH CAMO": true
     },
-    "home": false
+    "home": true
   },
   "beanie-ash": {
     "variants": {
       "ASH": true
     },
-    "home": true
+    "home": false
   },
   "beanie-cashew": {
     "variants": {
@@ -33,13 +33,13 @@
     "variants": {
       "LIME": true
     },
-    "home": false
+    "home": true
   },
   "beanie-navy": {
     "variants": {
       "NAVY": true
     },
-    "home": false
+    "home": true
   },
   "boxer-brief-3-pack-1": {
     "variants": {
@@ -50,53 +50,53 @@
       "APPLE, AQUA, TRUE BLUE / XL": true,
       "APPLE, AQUA, TRUE BLUE / 2XL": false
     },
-    "home": true
+    "home": false
   },
   "bump-case-clear": {
     "variants": {
       "CLEAR / IPHONE 17 PRO": true,
       "CLEAR / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "bump-case-lava": {
     "variants": {
       "LAVA / IPHONE 17 PRO": true,
       "LAVA / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "bump-case-slime": {
     "variants": {
       "SLIME / IPHONE 17 PRO": true,
       "SLIME / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "bump-case-smudge": {
     "variants": {
       "SMUDGE / IPHONE 17 PRO": true,
       "SMUDGE / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "glicky-chrome": {
     "variants": {
       "CHROME": true
     },
-    "home": true
+    "home": false
   },
   "glicky-gloss": {
     "variants": {
       "GLOSS": true
     },
-    "home": true
+    "home": false
   },
   "glicky-heat": {
     "variants": {
       "HEAT": true
     },
-    "home": true
+    "home": false
   },
   "hoodie": {
     "variants": {
@@ -107,7 +107,7 @@
       "CAVE / XL": false,
       "CAVE / 2XL": true
     },
-    "home": false
+    "home": true
   },
   "hoodie-2": {
     "variants": {
@@ -146,7 +146,7 @@
       "ASH / M 14": true,
       "ASH / M 15": true
     },
-    "home": false
+    "home": true
   },
   "new-boxer-short-turn-back-waist-blue-plaid": {
     "variants": {
@@ -157,7 +157,7 @@
       "BLUE PLAID / XL": false,
       "BLUE PLAID / XXL": false
     },
-    "home": true
+    "home": false
   },
   "new-boxer-short-turn-back-waist-yellow-plaid": {
     "variants": {
@@ -168,7 +168,7 @@
       "YELLOW PLAID / XL": true,
       "YELLOW PLAID / XXL": true
     },
-    "home": true
+    "home": false
   },
   "painter-pant-angel": {
     "variants": {
@@ -179,7 +179,7 @@
       "Angel / 36": false,
       "Angel / 38": false
     },
-    "home": true
+    "home": false
   },
   "painter-pant-copper": {
     "variants": {
@@ -190,7 +190,7 @@
       "COPPER / 36": false,
       "COPPER / 38": false
     },
-    "home": true
+    "home": false
   },
   "painter-pant-smoke": {
     "variants": {
@@ -201,7 +201,7 @@
       "SMOKE / 36": false,
       "SMOKE / 38": false
     },
-    "home": true
+    "home": false
   },
   "pleated-denim-jean": {
     "variants": {
@@ -229,7 +229,7 @@
       "DOTS / XL": false,
       "DOTS / XXL": false
     },
-    "home": true
+    "home": false
   },
   "reverse-zip-hoodie-1": {
     "variants": {
@@ -246,13 +246,13 @@
     "variants": {
       "ICY": false
     },
-    "home": true
+    "home": false
   },
   "rib-knit-beanie-1": {
     "variants": {
       "WHISPER": false
     },
-    "home": true
+    "home": false
   },
   "skullcap": {
     "variants": {
@@ -312,13 +312,13 @@
     "variants": {
       "ROOTBEER": true
     },
-    "home": false
+    "home": true
   },
   "speed-demon-snow-camo": {
     "variants": {
       "SNOW CAMO": true
     },
-    "home": false
+    "home": true
   },
   "sunken-mule": {
     "variants": {
@@ -335,14 +335,14 @@
       "CORAL / M 14": true,
       "CORAL / M 15": true
     },
-    "home": true
+    "home": false
   },
   "thin-loop-sock-2-pack": {
     "variants": {
       "HAILEY GREY / JET": false,
       "CLOUDY PINK / COFFEE": true
     },
-    "home": true
+    "home": false
   },
   "upsidedown": {
     "variants": {
@@ -353,6 +353,6 @@
       "TOASTY": true,
       "GOLF": true
     },
-    "home": false
+    "home": true
   }
 }
