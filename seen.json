@@ -33,13 +33,13 @@
     "variants": {
       "LIME": false
     },
-    "home": true
+    "home": false
   },
   "beanie-navy": {
     "variants": {
       "NAVY": false
     },
-    "home": true
+    "home": false
   },
   "boxer-brief-3-pack-1": {
     "variants": {
