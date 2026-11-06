@@ -131,6 +131,23 @@
     },
     "home": null
   },
+  "matterdaddies": {
+    "variants": {
+      "ASH / M 4 / W 5": false,
+      "ASH / M 5 / W 6": false,
+      "ASH / M 6 / W 7": false,
+      "ASH / M 7 / W 8": true,
+      "ASH / M 8 / W 9": true,
+      "ASH / M 9 / W 10": true,
+      "ASH / M 10 / W 11": true,
+      "ASH / M 11 / W 12": true,
+      "ASH / M 12 / W 13": true,
+      "ASH / M 13 / W 14": true,
+      "ASH / M 14": true,
+      "ASH / M 15": true
+    },
+    "home": false
+  },
   "new-boxer-short-turn-back-waist-blue-plaid": {
     "variants": {
       "BLUE PLAID / XS": false,
