@@ -274,7 +274,7 @@
   },
   "skullcap-punch": {
     "variants": {
-      "PUNCH": true
+      "PUNCH": false
     },
     "home": false
   },
