@@ -24,7 +24,7 @@
   },
   "beanie-cashew": {
     "variants": {
-      "CASHEW": false
+      "CASHEW": true
     },
     "home": false
   },
