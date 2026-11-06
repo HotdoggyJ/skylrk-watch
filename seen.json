@@ -1,7 +1,7 @@
 {
   "batwing-reverse-hoodie-jet": {
     "variants": {
-      "JET / S/M": true,
+      "JET / S/M": false,
       "JET / L/XL": true
     },
     "home": false
@@ -235,7 +235,7 @@
     "variants": {
       "APPLE / XS": false,
       "APPLE / S": false,
-      "APPLE / M": true,
+      "APPLE / M": false,
       "APPLE / L": false,
       "APPLE / XL": false,
       "APPLE / XXL": false
