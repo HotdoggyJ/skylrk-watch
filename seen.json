@@ -37,7 +37,7 @@
   },
   "beanie-navy": {
     "variants": {
-      "NAVY": true
+      "NAVY": false
     },
     "home": true
   },
