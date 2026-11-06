@@ -10,7 +10,7 @@
     "variants": {
       "CRAN": true,
       "CAVE": false,
-      "WAVE CAMO": true,
+      "WAVE CAMO": false,
       "CHERRY CAMO": false,
       "GUM": false,
       "EARTH CAMO": true
