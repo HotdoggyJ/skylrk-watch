@@ -105,7 +105,7 @@
       "CAVE / M": false,
       "CAVE / L": false,
       "CAVE / XL": false,
-      "CAVE / 2XL": true
+      "CAVE / 2XL": false
     },
     "home": true
   },
