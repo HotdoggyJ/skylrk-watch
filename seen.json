@@ -262,7 +262,7 @@
   },
   "skullcap-2": {
     "variants": {
-      "CHALK": true
+      "CHALK": false
     },
     "home": false
   },
