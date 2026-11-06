@@ -8,7 +8,6 @@
   },
   "beanie": {
     "variants": {
-      "CRAN": false,
       "CAVE": false,
       "WAVE CAMO": false,
       "CHERRY CAMO": false,
