@@ -102,7 +102,7 @@
       "CAVE / XS": true,
       "CAVE / S": true,
       "CAVE / M": true,
-      "CAVE / L": true,
+      "CAVE / L": false,
       "CAVE / XL": true,
       "CAVE / 2XL": false
     },
