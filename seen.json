@@ -345,7 +345,7 @@
   },
   "upsidedown": {
     "variants": {
-      "GLOSS": true,
+      "GLOSS": false,
       "GUM": true,
       "CLEAR": true,
       "WAX": true,
