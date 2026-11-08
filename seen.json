@@ -111,7 +111,7 @@
   "hoodie-2": {
     "variants": {
       "SUPER BLUE / XS": false,
-      "SUPER BLUE / S": true,
+      "SUPER BLUE / S": false,
       "SUPER BLUE / M": false,
       "SUPER BLUE / L": false,
       "SUPER BLUE / XL": false,
