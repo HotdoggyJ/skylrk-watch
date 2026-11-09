@@ -112,7 +112,7 @@
     "variants": {
       "SUPER BLUE / XS": false,
       "SUPER BLUE / S": false,
-      "SUPER BLUE / M": false,
+      "SUPER BLUE / M": true,
       "SUPER BLUE / L": false,
       "SUPER BLUE / XL": false,
       "SUPER BLUE / 2XL": false
