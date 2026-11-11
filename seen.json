@@ -81,7 +81,7 @@
   },
   "domo-1": {
     "variants": {
-      "POWDER": true
+      "POWDER": false
     },
     "home": false
   },
