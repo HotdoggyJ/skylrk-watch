@@ -79,6 +79,12 @@
     },
     "home": true
   },
+  "domo-1": {
+    "variants": {
+      "POWDER": false
+    },
+    "home": false
+  },
   "glicky-chrome": {
     "variants": {
       "CHROME": true
