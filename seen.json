@@ -56,28 +56,28 @@
       "CLEAR / IPHONE 17 PRO": true,
       "CLEAR / IPHONE 17 PRO MAX": true
     },
-    "home": false
+    "home": true
   },
   "bump-case-lava": {
     "variants": {
       "LAVA / IPHONE 17 PRO": true,
       "LAVA / IPHONE 17 PRO MAX": true
     },
-    "home": false
+    "home": true
   },
   "bump-case-slime": {
     "variants": {
       "SLIME / IPHONE 17 PRO": true,
       "SLIME / IPHONE 17 PRO MAX": true
     },
-    "home": false
+    "home": true
   },
   "bump-case-smudge": {
     "variants": {
       "SMUDGE / IPHONE 17 PRO": true,
       "SMUDGE / IPHONE 17 PRO MAX": true
     },
-    "home": false
+    "home": true
   },
   "glicky-chrome": {
     "variants": {
@@ -89,7 +89,7 @@
     "variants": {
       "GLOSS": true
     },
-    "home": false
+    "home": true
   },
   "glicky-heat": {
     "variants": {
@@ -145,7 +145,7 @@
       "ASH / M 14": false,
       "ASH / M 15": false
     },
-    "home": true
+    "home": false
   },
   "new-boxer-short-turn-back-waist-blue-plaid": {
     "variants": {
