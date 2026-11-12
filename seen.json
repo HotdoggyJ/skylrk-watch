@@ -36,7 +36,7 @@
   },
   "beanie-lime": {
     "variants": {
-      "LIME": false
+      "LIME": true
     },
     "home": false
   },
