@@ -253,6 +253,16 @@
     },
     "home": false
   },
+  "reverse-sweats": {
+    "variants": {
+      "PAPER / XS": false,
+      "PAPER / S": false,
+      "PAPER / M": false,
+      "PAPER / L": true,
+      "PAPER / 2XL": true
+    },
+    "home": false
+  },
   "reverse-zip-hoodie-1": {
     "variants": {
       "APPLE / XS": false,
