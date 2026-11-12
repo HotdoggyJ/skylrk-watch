@@ -283,12 +283,23 @@
   },
   "reverse-sweats-jogger-iris": {
     "variants": {
-      "IRIS / XS": false,
-      "IRIS / S": false,
-      "IRIS / M": false,
+      "IRIS / XS": true,
+      "IRIS / S": true,
+      "IRIS / M": true,
       "IRIS / L": true,
       "IRIS / XL": true,
       "IRIS / 2XL": true
+    },
+    "home": false
+  },
+  "reverse-sweats-jogger-lime": {
+    "variants": {
+      "LIME / XS": false,
+      "LIME / S": false,
+      "LIME / M": false,
+      "LIME / L": true,
+      "LIME / XL": true,
+      "LIME / 2XL": true
     },
     "home": false
   },
