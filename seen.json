@@ -235,7 +235,7 @@
     "variants": {
       "LIME / XS": true,
       "LIME / S": false,
-      "LIME / M": true,
+      "LIME / M": false,
       "LIME / L": true,
       "LIME / XL": false,
       "LIME / 2XL": true
