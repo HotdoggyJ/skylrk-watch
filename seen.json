@@ -281,7 +281,7 @@
       "NAVY / M": false,
       "NAVY / L": false,
       "NAVY / XL": false,
-      "NAVY / XXL": false
+      "NAVY / XXL": true
     },
     "home": false
   },
