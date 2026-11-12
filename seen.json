@@ -30,7 +30,7 @@
   },
   "beanie-iris": {
     "variants": {
-      "IRIS": true
+      "IRIS": false
     },
     "home": false
   },
