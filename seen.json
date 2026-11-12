@@ -28,6 +28,12 @@
     },
     "home": false
   },
+  "beanie-iris": {
+    "variants": {
+      "IRIS": true
+    },
+    "home": false
+  },
   "beanie-lime": {
     "variants": {
       "LIME": false
