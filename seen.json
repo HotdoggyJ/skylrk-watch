@@ -348,6 +348,17 @@
     },
     "home": false
   },
+  "sweats-cave": {
+    "variants": {
+      "CAVE / XS": false,
+      "CAVE / S": false,
+      "CAVE / M": false,
+      "CAVE / L": true,
+      "CAVE / XL": true,
+      "CAVE / 2XL": true
+    },
+    "home": false
+  },
   "thin-loop-sock-2-pack": {
     "variants": {
       "HAILEY GREY / JET": false,
