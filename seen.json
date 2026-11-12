@@ -265,12 +265,23 @@
   },
   "reverse-sweats-cashew": {
     "variants": {
-      "CASHEW / XS": false,
-      "CASHEW / S": false,
-      "CASHEW / M": false,
-      "CASHEW / L": false,
-      "CASHEW / XL": false,
+      "CASHEW / XS": true,
+      "CASHEW / S": true,
+      "CASHEW / M": true,
+      "CASHEW / L": true,
+      "CASHEW / XL": true,
       "CASHEW / XXL": true
+    },
+    "home": false
+  },
+  "reverse-sweats-navy": {
+    "variants": {
+      "NAVY / XS": false,
+      "NAVY / S": false,
+      "NAVY / M": false,
+      "NAVY / L": false,
+      "NAVY / XL": false,
+      "NAVY / XXL": false
     },
     "home": false
   },
