@@ -255,11 +255,18 @@
   },
   "reverse-sweats": {
     "variants": {
-      "PAPER / XS": false,
+      "PAPER / XS": true,
       "PAPER / S": false,
       "PAPER / M": false,
       "PAPER / L": true,
-      "PAPER / 2XL": true
+      "PAPER / XL": true,
+      "PAPER / 2XL": true,
+      "POWDER / XS": false,
+      "POWDER / S": true,
+      "POWDER / M": true,
+      "POWDER / L": true,
+      "POWDER / XL": true,
+      "POWDER / 2XL": true
     },
     "home": false
   },
