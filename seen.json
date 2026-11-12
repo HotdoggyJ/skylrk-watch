@@ -281,6 +281,17 @@
     },
     "home": false
   },
+  "reverse-sweats-jogger-iris": {
+    "variants": {
+      "IRIS / XS": false,
+      "IRIS / S": false,
+      "IRIS / M": false,
+      "IRIS / L": true,
+      "IRIS / XL": true,
+      "IRIS / 2XL": true
+    },
+    "home": false
+  },
   "reverse-sweats-navy": {
     "variants": {
       "NAVY / XS": true,
