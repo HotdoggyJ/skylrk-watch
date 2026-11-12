@@ -294,9 +294,9 @@
   },
   "reverse-sweats-jogger-lime": {
     "variants": {
-      "LIME / XS": false,
-      "LIME / S": false,
-      "LIME / M": false,
+      "LIME / XS": true,
+      "LIME / S": true,
+      "LIME / M": true,
       "LIME / L": true,
       "LIME / XL": true,
       "LIME / 2XL": true
