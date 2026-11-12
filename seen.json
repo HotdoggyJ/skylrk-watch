@@ -263,6 +263,17 @@
     },
     "home": false
   },
+  "reverse-sweats-cashew": {
+    "variants": {
+      "CASHEW / XS": false,
+      "CASHEW / S": false,
+      "CASHEW / M": false,
+      "CASHEW / L": false,
+      "CASHEW / XL": false,
+      "CASHEW / XXL": true
+    },
+    "home": false
+  },
   "reverse-zip-hoodie-1": {
     "variants": {
       "APPLE / XS": false,
