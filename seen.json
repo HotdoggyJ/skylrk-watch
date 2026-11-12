@@ -101,7 +101,7 @@
     "variants": {
       "GLOSS": true
     },
-    "home": true
+    "home": false
   },
   "glicky-heat": {
     "variants": {
@@ -240,7 +240,7 @@
       "LIME / XL": false,
       "LIME / 2XL": false
     },
-    "home": false
+    "home": true
   },
   "reverse-no-zip-dots": {
     "variants": {
