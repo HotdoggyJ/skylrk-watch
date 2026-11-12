@@ -237,7 +237,7 @@
       "LIME / S": false,
       "LIME / M": true,
       "LIME / L": true,
-      "LIME / XL": true,
+      "LIME / XL": false,
       "LIME / 2XL": true
     },
     "home": false
