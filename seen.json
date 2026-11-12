@@ -276,11 +276,11 @@
   },
   "reverse-sweats-navy": {
     "variants": {
-      "NAVY / XS": false,
-      "NAVY / S": false,
-      "NAVY / M": false,
-      "NAVY / L": false,
-      "NAVY / XL": false,
+      "NAVY / XS": true,
+      "NAVY / S": true,
+      "NAVY / M": true,
+      "NAVY / L": true,
+      "NAVY / XL": true,
       "NAVY / XXL": true
     },
     "home": false
