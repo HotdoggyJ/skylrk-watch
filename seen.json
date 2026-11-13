@@ -294,7 +294,7 @@
       "DOTS / S": true,
       "DOTS / M": true,
       "DOTS / L": true,
-      "DOTS / XL": true,
+      "DOTS / XL": false,
       "DOTS / XXL": true
     },
     "home": true
