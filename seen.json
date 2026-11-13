@@ -252,7 +252,7 @@
       "POWDER / 2XL": false,
       "CAVE / XS": false,
       "CAVE / S": true,
-      "CAVE / M": true,
+      "CAVE / M": false,
       "CAVE / L": true,
       "CAVE / XL": false,
       "CAVE / 2XL": false,
