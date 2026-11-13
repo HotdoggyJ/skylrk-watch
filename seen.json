@@ -101,7 +101,7 @@
     "variants": {
       "GLOSS": true
     },
-    "home": false
+    "home": true
   },
   "glicky-heat": {
     "variants": {
