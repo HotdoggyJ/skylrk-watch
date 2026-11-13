@@ -181,6 +181,17 @@
     },
     "home": false
   },
+  "no-zip-hoodie-cashew": {
+    "variants": {
+      "CASHEW / XS": true,
+      "CASHEW / S": true,
+      "CASHEW / M": true,
+      "CASHEW / L": true,
+      "CASHEW / XL": true,
+      "CASHEW / 2XL": false
+    },
+    "home": true
+  },
   "painter-pant-angel": {
     "variants": {
       "Angel / 28": true,
@@ -231,6 +242,41 @@
     },
     "home": null
   },
+  "reverse-hoodie": {
+    "variants": {
+      "POWDER / XS": false,
+      "POWDER / S": false,
+      "POWDER / M": false,
+      "POWDER / L": false,
+      "POWDER / XL": false,
+      "POWDER / 2XL": false,
+      "CAVE / XS": false,
+      "CAVE / S": true,
+      "CAVE / M": true,
+      "CAVE / L": true,
+      "CAVE / XL": false,
+      "CAVE / 2XL": false,
+      "ALMOND / XS": true,
+      "ALMOND / S": false,
+      "ALMOND / M": false,
+      "ALMOND / L": false,
+      "ALMOND / XL": false,
+      "ALMOND / 2XL": false,
+      "FOREST / XS": false,
+      "FOREST / S": false,
+      "FOREST / M": false,
+      "FOREST / L": false,
+      "FOREST / XL": false,
+      "FOREST / 2XL": true,
+      "SLATE / XS": false,
+      "SLATE / S": false,
+      "SLATE / M": false,
+      "SLATE / L": false,
+      "SLATE / XL": false,
+      "SLATE / 2XL": false
+    },
+    "home": true
+  },
   "reverse-hoodie-lime": {
     "variants": {
       "LIME / XS": false,
@@ -247,11 +293,11 @@
       "DOTS / XS": true,
       "DOTS / S": true,
       "DOTS / M": true,
-      "DOTS / L": false,
-      "DOTS / XL": false,
-      "DOTS / XXL": false
+      "DOTS / L": true,
+      "DOTS / XL": true,
+      "DOTS / XXL": true
     },
-    "home": false
+    "home": true
   },
   "reverse-sweats": {
     "variants": {
@@ -285,12 +331,12 @@
     "variants": {
       "IRIS / XS": true,
       "IRIS / S": true,
-      "IRIS / M": true,
+      "IRIS / M": false,
       "IRIS / L": true,
       "IRIS / XL": true,
       "IRIS / 2XL": true
     },
-    "home": false
+    "home": true
   },
   "reverse-sweats-jogger-lime": {
     "variants": {
@@ -301,7 +347,7 @@
       "LIME / XL": true,
       "LIME / 2XL": true
     },
-    "home": false
+    "home": true
   },
   "reverse-sweats-navy": {
     "variants": {
@@ -422,14 +468,14 @@
   },
   "sweats-cave": {
     "variants": {
-      "CAVE / XS": true,
-      "CAVE / S": true,
-      "CAVE / M": true,
+      "CAVE / XS": false,
+      "CAVE / S": false,
+      "CAVE / M": false,
       "CAVE / L": true,
       "CAVE / XL": true,
       "CAVE / 2XL": true
     },
-    "home": false
+    "home": true
   },
   "thin-loop-sock-2-pack": {
     "variants": {
@@ -437,6 +483,18 @@
       "CLOUDY PINK / COFFEE": true
     },
     "home": false
+  },
+  "thin-loop-sock-2-pack-2": {
+    "variants": {
+      "MINT/LAGOON": true
+    },
+    "home": true
+  },
+  "thin-loop-sock-2-pack-iris-moon": {
+    "variants": {
+      "IRIS/MOON": true
+    },
+    "home": true
   },
   "upsidedown": {
     "variants": {
