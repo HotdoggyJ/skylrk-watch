@@ -233,7 +233,7 @@
   },
   "reverse-hoodie-lime": {
     "variants": {
-      "LIME / XS": true,
+      "LIME / XS": false,
       "LIME / S": false,
       "LIME / M": false,
       "LIME / L": false,
