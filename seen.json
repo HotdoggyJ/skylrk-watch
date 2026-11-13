@@ -289,7 +289,7 @@
       "DOTS / M": true,
       "DOTS / L": false,
       "DOTS / XL": false,
-      "DOTS / XXL": true
+      "DOTS / XXL": false
     },
     "home": true
   },
