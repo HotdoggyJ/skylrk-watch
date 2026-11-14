@@ -112,7 +112,7 @@
   "hoodie": {
     "variants": {
       "CAVE / XS": true,
-      "CAVE / S": true,
+      "CAVE / S": false,
       "CAVE / M": false,
       "CAVE / L": false,
       "CAVE / XL": false,
