@@ -323,7 +323,7 @@
   },
   "reverse-sweats-jogger-iris": {
     "variants": {
-      "IRIS / XS": true,
+      "IRIS / XS": false,
       "IRIS / S": false,
       "IRIS / M": false,
       "IRIS / L": true,
