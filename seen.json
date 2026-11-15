@@ -256,12 +256,6 @@
       "CAVE / L": true,
       "CAVE / XL": false,
       "CAVE / 2XL": false,
-      "FOREST / XS": false,
-      "FOREST / S": false,
-      "FOREST / M": false,
-      "FOREST / L": false,
-      "FOREST / XL": false,
-      "FOREST / 2XL": false,
       "SLATE / XS": false,
       "SLATE / S": false,
       "SLATE / M": false,
@@ -269,7 +263,7 @@
       "SLATE / XL": false,
       "SLATE / 2XL": false
     },
-    "home": true
+    "home": false
   },
   "reverse-hoodie-lime": {
     "variants": {
