@@ -163,7 +163,7 @@
     "variants": {
       "TOY / M 4 / W 5": true,
       "TOY / M 5 / W 6": true,
-      "TOY / M 6 / W 7": true,
+      "TOY / M 6 / W 7": false,
       "TOY / M 7 / W 8": false,
       "TOY / M 8 / W 9": false,
       "TOY / M 9 / W 10": true,
