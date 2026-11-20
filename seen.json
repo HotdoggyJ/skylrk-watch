@@ -161,7 +161,7 @@
   },
   "matterdaddies-toy": {
     "variants": {
-      "TOY / M 4 / W 5": true,
+      "TOY / M 4 / W 5": false,
       "TOY / M 5 / W 6": false,
       "TOY / M 6 / W 7": false,
       "TOY / M 7 / W 8": false,
