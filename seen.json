@@ -203,7 +203,7 @@
       "CASHEW / XS": true,
       "CASHEW / S": true,
       "CASHEW / M": true,
-      "CASHEW / L": true,
+      "CASHEW / L": false,
       "CASHEW / XL": false,
       "CASHEW / 2XL": false
     },
