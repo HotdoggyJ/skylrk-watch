@@ -111,12 +111,12 @@
   },
   "hoodie": {
     "variants": {
-      "CAVE / XS": true,
-      "CAVE / S": false,
-      "CAVE / M": false,
-      "CAVE / L": false,
-      "CAVE / XL": false,
-      "CAVE / 2XL": false
+      "JELLY / XS": true,
+      "JELLY / S": true,
+      "JELLY / M": false,
+      "JELLY / L": false,
+      "JELLY / XL": false,
+      "JELLY / 2XL": true
     },
     "home": true
   },
