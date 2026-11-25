@@ -62,28 +62,28 @@
       "CLEAR / IPHONE 17 PRO": true,
       "CLEAR / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "bump-case-lava": {
     "variants": {
       "LAVA / IPHONE 17 PRO": true,
       "LAVA / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "bump-case-slime": {
     "variants": {
       "SLIME / IPHONE 17 PRO": true,
       "SLIME / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "bump-case-smudge": {
     "variants": {
       "SMUDGE / IPHONE 17 PRO": true,
       "SMUDGE / IPHONE 17 PRO MAX": true
     },
-    "home": true
+    "home": false
   },
   "domo-1": {
     "variants": {
@@ -101,7 +101,7 @@
     "variants": {
       "GLOSS": true
     },
-    "home": true
+    "home": false
   },
   "glicky-heat": {
     "variants": {
@@ -174,7 +174,7 @@
       "TOY / M 14 / W 15": true,
       "TOY / M 15 / W 16": true
     },
-    "home": true
+    "home": false
   },
   "new-boxer-short-turn-back-waist-blue-plaid": {
     "variants": {
@@ -329,7 +329,7 @@
       "IRIS / XL": true,
       "IRIS / 2XL": true
     },
-    "home": true
+    "home": false
   },
   "reverse-sweats-jogger-lime": {
     "variants": {
@@ -340,7 +340,7 @@
       "LIME / XL": true,
       "LIME / 2XL": true
     },
-    "home": true
+    "home": false
   },
   "reverse-sweats-navy": {
     "variants": {
@@ -434,13 +434,13 @@
     "variants": {
       "ROOTBEER": true
     },
-    "home": true
+    "home": false
   },
   "speed-demon-snow-camo": {
     "variants": {
       "SNOW CAMO": true
     },
-    "home": true
+    "home": false
   },
   "sunken-mule": {
     "variants": {
@@ -468,7 +468,7 @@
       "CAVE / XL": true,
       "CAVE / 2XL": true
     },
-    "home": true
+    "home": false
   },
   "thin-loop-sock-2-pack": {
     "variants": {
@@ -481,13 +481,13 @@
     "variants": {
       "MINT/LAGOON": true
     },
-    "home": true
+    "home": false
   },
   "thin-loop-sock-2-pack-iris-moon": {
     "variants": {
       "IRIS/MOON": true
     },
-    "home": true
+    "home": false
   },
   "upsidedown": {
     "variants": {
