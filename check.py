@@ -1,5 +1,5 @@
 """
-SKYLRK 新品 / 新色 / 補貨 / 上首頁 通知
+SKYLRK 新品 / 換色 / 新色 / 補貨 / 上首頁 通知
 每次執行：抓商品清單 + 首頁 → 跟上次存的比對 → 有變化就推播到手機 (ntfy)
 """
 
@@ -10,55 +10,53 @@ import re
 import requests
 
 SHOP = "https://skylrk.com"
-SEEN_FILE = "seen.json"               # 存每個商品的尺寸/顏色庫存、有沒有在首頁
-NTFY_TOPIC = os.environ["NTFY_TOPIC"]  # 從 GitHub Secrets 讀進來，不寫在程式裡
-
+SEEN_FILE = "seen.json"
+NTFY_TOPIC = os.environ["NTFY_TOPIC"]
 HEADERS = {"User-Agent": "Mozilla/5.0 (new-item-checker)"}
 
 
 def get_products():
-    """回傳 {商品代號: {"title": 名稱, "variants": {選項名稱: 有沒有貨}}}
-    選項名稱像 "Blue / M"，顏色和尺寸都在裡面。"""
+    """回傳 {代號: {"title": 名稱, "variants": {選項ID: {"title": 選項名稱, "available": 有沒有貨}}}}
+    選項 ID 是 Shopify 給每個尺寸/顏色的內部編號，店家換色就算尺寸名稱一樣，ID 也會換。"""
     r = requests.get(f"{SHOP}/products.json?limit=250", headers=HEADERS, timeout=30)
     r.raise_for_status()
     return {
         p["handle"]: {
             "title": p["title"],
-            "variants": {v["title"]: bool(v.get("available")) for v in p.get("variants", [])},
+            "variants": {
+                str(v["id"]): {"title": v["title"], "available": bool(v.get("available"))}
+                for v in p.get("variants", [])
+            },
         }
         for p in r.json()["products"]
     }
 
 
 def get_homepage_handles():
-    """回傳首頁上有出現的商品代號（集合）。抓不到就回傳 None，當作這輪不判斷首頁。"""
+    """首頁上出現的商品代號。連結可能是 /products/xxx 或 https://skylrk.com/products/xxx，兩種都認。"""
     try:
         r = requests.get(SHOP, headers=HEADERS, timeout=30)
         r.raise_for_status()
-        return set(re.findall(r'href="/products/([a-z0-9\-]+)', r.text))
+        return set(re.findall(r'/products/([a-z0-9\-]+)', r.text))
     except Exception as e:
         print("首頁抓取失敗，這輪跳過首頁判斷:", e)
         return None
 
 
 def load_seen():
-    """讀舊紀錄。舊版格式會自動轉成新格式：{代號: {"variants": {...}, "home": bool}}"""
+    """讀舊紀錄。任何舊格式都轉成新格式；舊格式沒有的欄位先留空，這一輪只記錄不比對。"""
     if not os.path.exists(SEEN_FILE):
         return None
     with open(SEEN_FILE, encoding="utf-8") as f:
         data = json.load(f)
     seen = {}
     if isinstance(data, list):
-        for h in data:
-            seen[h] = {"variants": {}, "home": None}
-    else:
-        for h, v in data.items():
-            if isinstance(v, dict) and "variants" in v:
-                seen[h] = {"variants": v["variants"], "home": v.get("home")}
-            elif isinstance(v, dict):
-                seen[h] = {"variants": v, "home": None}
-            else:
-                seen[h] = {"variants": {}, "home": None}
+        data = {h: {} for h in data}
+    for h, v in data.items():
+        if isinstance(v, dict) and "variants" in v and all(isinstance(x, dict) for x in v["variants"].values()):
+            seen[h] = {"title": v.get("title"), "variants": v["variants"], "home": v.get("home")}
+        else:
+            seen[h] = {"title": None, "variants": {}, "home": None}
     return seen
 
 
@@ -68,14 +66,15 @@ def save_seen(seen):
 
 
 def notify(title, body):
-    # HTTP 標頭只能放英文，中文標題要先用 RFC 2047 格式編碼，ntfy 會自動解回中文
     encoded_title = "=?UTF-8?B?" + base64.b64encode(title.encode("utf-8")).decode("ascii") + "?="
-    requests.post(
+    r = requests.post(
         f"https://ntfy.sh/{NTFY_TOPIC}",
         data=body.encode("utf-8"),
         headers={"Title": encoded_title, "Priority": "urgent", "Tags": "shopping_bags"},
         timeout=30,
     )
+    print(f"ntfy 回應 {r.status_code}: {r.text[:200]}")
+    r.raise_for_status()   # 發不出去就讓這一輪變紅，不要默默吞掉
 
 
 def link(h):
@@ -89,31 +88,46 @@ def main():
 
     seen = load_seen()
     if seen is None:
-        save_seen({h: {"variants": p["variants"], "home": (h in home) if home is not None else None}
+        save_seen({h: {"title": p["title"], "variants": p["variants"],
+                       "home": (h in home) if home is not None else None}
                    for h, p in current.items()})
-        notify("SKYLRK 監控已啟動", f"已記錄 {len(current)} 個現有商品，之後有新品、新色、補貨、上首頁都會通知你。")
-        print("第一次執行，已建立 seen.json")
+        notify("SKYLRK 監控已啟動", f"已記錄 {len(current)} 個現有商品。")
         return
 
-    new, new_variants, restocked, to_home = [], [], [], []
+    new, changed, new_variants, restocked, to_home = [], [], [], [], []
 
     for h, p in current.items():
         if h not in seen:
-            new.append(h)                                   # 全新商品
+            new.append(h)
             continue
-        old = seen[h]["variants"]
-        added = [s for s in p["variants"] if s not in old]  # 新顏色 / 新尺寸
-        if added:
-            new_variants.append((h, added))
-        back = [s for s, ok in p["variants"].items() if ok and old.get(s) is False]
-        if back:
-            restocked.append((h, back))                     # 補貨
-        if home is not None and h in home and seen[h]["home"] is False:
-            to_home.append(h)                               # 本來不在首頁，現在上首頁了
+        old = seen[h]
+        old_vars = old["variants"]
+
+        # 名稱換了 = 店家把這個商品換成另一個顏色/款式
+        if old["title"] and old["title"] != p["title"]:
+            changed.append((h, old["title"]))
+
+        # 多出新的選項 ID = 新色 / 新尺寸（就算名稱跟舊的一樣也算）
+        if old_vars:
+            added = [v["title"] for vid, v in p["variants"].items() if vid not in old_vars]
+            if added and not any(c[0] == h for c in changed):
+                new_variants.append((h, added))
+
+            # 同一個選項 ID 從沒貨變有貨 = 補貨
+            back = [v["title"] for vid, v in p["variants"].items()
+                    if vid in old_vars and old_vars[vid]["available"] is False and v["available"]]
+            if back:
+                restocked.append((h, back))
+
+        if home is not None and h in home and old["home"] is False:
+            to_home.append(h)
 
     if new:
         notify(f"SKYLRK 新品 x{len(new)}",
                "\n\n".join(f"{current[h]['title']}\n{link(h)}" for h in new))
+    if changed:
+        notify(f"SKYLRK 換新款 x{len(changed)}",
+               "\n\n".join(f"{current[h]['title']}（原本是 {old_t}）\n{link(h)}" for h, old_t in changed))
     if new_variants:
         notify(f"SKYLRK 新色/新尺寸 x{len(new_variants)}",
                "\n\n".join(f"{current[h]['title']}（{', '.join(s)}）\n{link(h)}" for h, s in new_variants))
@@ -124,15 +138,12 @@ def main():
         notify(f"SKYLRK 上首頁 x{len(to_home)}",
                "\n\n".join(f"{current[h]['title']}\n{link(h)}" for h in to_home))
 
-    print("新品:", new, "| 新色:", new_variants, "| 補貨:", restocked, "| 上首頁:", to_home)
+    print("新品:", new, "| 換新款:", changed, "| 新色:", new_variants, "| 補貨:", restocked, "| 上首頁:", to_home)
 
-    # 更新紀錄
     for h, p in current.items():
         prev_home = seen.get(h, {}).get("home")
-        seen[h] = {
-            "variants": p["variants"],
-            "home": (h in home) if home is not None else prev_home,
-        }
+        seen[h] = {"title": p["title"], "variants": p["variants"],
+                   "home": (h in home) if home is not None else prev_home}
     save_seen(seen)
 
 
